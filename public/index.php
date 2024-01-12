@@ -14,18 +14,25 @@
 <?php 
 require_once '../includes/db.php';
 
-$sql = 'SELECT * FROm posts ORDER BY date DESC';
-$stmt = $pdo->prepare($sql);
-$stmt->execute();
+try {
+    $sql = 'SELECT * FROm posts ORDER BY date DESC';
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute();
 
-$posts = $stmt->fetchAll();
+    $posts = $stmt->fetchAll();
 
-foreach ($posts as $post) {
-    echo '<h2>' . htmlspecialchars($post ['title']) . '</h2>';
-    echo '<p>' . htmlspecialchars($post['content']) . '</p>';
-    echo '<p>Posted by ' . htmlspecialchars($post['author']) . '</p>';
-    echo '<a href="post.php?id=' . htmlspecialchars($post['id']) . '">Read more</a>';
+    foreach ($posts as $post) {
+        echo '<h2>' . htmlspecialchars($post ['title']) . '</h2>';
+        echo '<p>' . htmlspecialchars($post['content']) . '</p>';
+        echo '<p>Posted by ' . htmlspecialchars($post['author']) . '</p>';
+        echo '<a href="post.php?id=' . htmlspecialchars($post['id']) . '">Read more</a>';
+    }
+} catch (PDOException $e) {
+    echo 'Error:' . $e->getMessage();
 }
+
+
+
 
 
 ?>
