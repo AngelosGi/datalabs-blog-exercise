@@ -11,20 +11,24 @@
     <h1>Welcome to My Blog</h1>
 
     <!-- posts will be here -->
-<div class="post">
-    <h2>Post Title</h2>
-    <p>Post Content</p>
-    <p>Author: John Doe | Date: 2022-02-22</p>
-    <img src="path/to/image">
-    <div class="comments">
-        <h3>Comments:</h3>
-        <div class="comment">
-            <p>John: This is a comment!</p>
-            <p>Date: 2022-02-22</p>
-        </div>
-        <!-- More comments as necessary -->
-    </div>    
-</div>
+<?php 
+require_once '../includes/db.php';
+
+$sql = 'SELECT * FROm posts ORDER BY date DESC';
+$stmt = $pdo->prepare($sql);
+$stmt->execute();
+
+$posts = $stmt->fetchAll();
+
+foreach ($posts as $post) {
+    echo '<h2>' . htmlspecialchars($post ['title']) . '</h2>';
+    echo '<p>' . htmlspecialchars($post['content']) . '</p>';
+    echo '<p>Posted by ' . htmlspecialchars($post['author']) . '</p>';
+    echo '<a href="post.php?id=' . htmlspecialchars($post['id']) . '">Read more</a>';
+}
+
+
+?>
 
 </body>
 </html>
