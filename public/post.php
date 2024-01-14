@@ -48,6 +48,11 @@ try {
     <input type="submit" value="Submit">
 </form>
 
+<form method="post" action="delete_post.php">
+    <input type="hidden" name="id" value="<?php echo htmlspecialchars($id); ?>">
+    <input type="submit" value="Delete Post">
+</form>
+
 <script>
 function validateForm() {
     var author = document.getElementById('author').value;
