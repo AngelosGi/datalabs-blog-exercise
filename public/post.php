@@ -29,3 +29,14 @@ try {
 } catch (PDOException $e) {
     echo 'Error: ' . $e->getMessage();
 }
+
+?>
+
+<form method="post" action="add_comment.php">
+    <input type="hidden" name="post_id" value="<?php echo htmlspecialchars($id); ?>">
+    <label for="author">Name:</label><br>
+    <input type="text" id="author" name="author"><br>
+    <label for="content">Comment:</label><br>
+    <textarea id="content" name="content"></textarea><br>
+    <input type="submit" value="Submit">
+</form>
