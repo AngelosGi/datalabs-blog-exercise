@@ -1,15 +1,22 @@
 <?php
 require_once '../includes/db.php';
 
+if (!isset($_GET['id'])) {
+    die('Missing post id!');
+}
 
-try {
     $id = $_GET['id'];
 
+try {
     $sql = 'SELECT * FROM posts WHERE id = ?';
     $stmt = $pdo->prepare($sql);
     $stmt->execute([$id]);
 
     $post = $stmt->fetch();
+
+    if (!$post) {
+        die('Post not found!');
+    }
 
     echo '<h2>' . htmlspecialchars($post['title']) . '</h2>';
     echo '<p>' . htmlspecialchars($post['content']) . '</p>';
@@ -35,8 +42,20 @@ try {
 <form method="post" action="add_comment.php">
     <input type="hidden" name="post_id" value="<?php echo htmlspecialchars($id); ?>">
     <label for="author">Name:</label><br>
-    <input type="text" id="author" name="author"><br>
+    <input type="text" id="author" name="author" required><br>
     <label for="content">Comment:</label><br>
-    <textarea id="content" name="content"></textarea><br>
+    <textarea id="content" name="content" required></textarea><br>
     <input type="submit" value="Submit">
 </form>
+
+<script>
+function validateForm() {
+    var author = document.getElementById('author').value;
+    var content = document.getElementById('content').value;
+
+    if (author == "" || content == "") {
+        alert("Name and comment must be filled out");
+        return false;
+    }
+}
+</script>
