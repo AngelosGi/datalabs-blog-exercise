@@ -1,6 +1,8 @@
 <?php
 require_once '../includes/db.php';
 
+include '../templates/header.php';
+
 if (!isset($_GET['id'])) {
     die('Missing post id!');
 }
@@ -39,6 +41,9 @@ try {
 
 ?>
 
+
+
+
 <form method="post" action="add_comment.php">
     <input type="hidden" name="post_id" value="<?php echo htmlspecialchars($id); ?>">
     <label for="author">Name:</label><br>
@@ -48,10 +53,14 @@ try {
     <input type="submit" value="Submit">
 </form>
 
-<form method="post" action="delete_post.php">
+
+
+
+<form method="post" action="../admin/delete_post.php">
     <input type="hidden" name="id" value="<?php echo htmlspecialchars($id); ?>">
     <input type="submit" value="Delete Post">
 </form>
+
 
 <script>
 function validateForm() {
