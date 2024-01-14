@@ -10,7 +10,6 @@
 
     <h1>Welcome to My Blog</h1>
 
-    <!-- posts will be here -->
 <?php 
 require_once '../includes/db.php';
 
