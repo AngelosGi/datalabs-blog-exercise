@@ -14,7 +14,7 @@
 require_once '../includes/db.php';
 
 try {
-    $sql = 'SELECT * FROm posts ORDER BY date DESC';
+    $sql = 'SELECT * FROM posts ORDER BY date DESC';
     $stmt = $pdo->prepare($sql);
     $stmt->execute();
 
