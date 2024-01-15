@@ -1,5 +1,10 @@
 <?php 
+if (!defined('ROOT_PATH')) {
+    define('ROOT_PATH', __DIR__ . '/..');
+}
+
 require_once ROOT_PATH . '/includes/db.php';
+
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $id = $_POST['post_id'];
