@@ -6,7 +6,9 @@
 </head>
 <body>
 
-<?php include '../templates/header.php'; ?>
+<?php 
+// session_start();
+    include '../templates/header.php'; ?>
 
     <h1>Welcome to My Blog</h1>
 
