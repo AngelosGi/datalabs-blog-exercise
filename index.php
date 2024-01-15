@@ -18,6 +18,11 @@ switch ($page) {
         break;
     case 'post':
         require ROOT_PATH . '/public/post.php';
+        break;
+    case 'logout':
+        require ROOT_PATH . '/admin/logout.php';
+    case 'delete':
+        require ROOT_PATH . '/admin/delete_post.php';
     break;
     // Add more cases as needed...
     default:
