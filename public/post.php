@@ -1,4 +1,8 @@
 <?php
+if (!defined('ROOT_PATH')) {
+    define('ROOT_PATH', __DIR__ . '/..');
+}
+
 require_once ROOT_PATH . '/includes/db.php';
 
 include ROOT_PATH . '/templates/header.php';
@@ -44,7 +48,7 @@ try {
 
 
 
-<form method="post" action="add_comment.php">
+<form method="post" action="public/add_comment.php">
     <input type="hidden" name="post_id" value="<?php echo htmlspecialchars($id); ?>">
     <label for="author">Name:</label><br>
     <input type="text" id="author" name="author" required><br>
@@ -56,7 +60,7 @@ try {
 
 
 
-<form method="post" action="../admin/delete_post.php">
+<form method="post" action="/admin/delete_post.php">
     <input type="hidden" name="id" value="<?php echo htmlspecialchars($id); ?>">
     <input type="submit" value="Delete Post">
 </form>
