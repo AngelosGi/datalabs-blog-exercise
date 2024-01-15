@@ -1,6 +1,6 @@
 <?php
-require_once '../includes/db.php';
-include '../templates/header.php';
+
+include ROOT_PATH . '../templates/header.php';
 
 if (!isset($_SESSION['admin_logged_in'])) {
     echo 'You must be logged in as an admin to perform this action.';
@@ -21,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt = $pdo->prepare($sql);
         $stmt->execute([$title, $content, $author]);
 
-    header('Location: ../public/index.php');
+    header('Location: index.php');
     exit;
     }catch (PDOException $e) {
         echo 'Error: ' . $e->getMessage();

@@ -8,12 +8,12 @@
 
 <?php 
 // session_start();
-    include '../templates/header.php'; ?>
+    include ROOT_PATH . '/templates/header.php'; ?>
 
     <h1>Welcome to My Blog</h1>
 
 <?php 
-require_once '../includes/db.php';
+require_once ROOT_PATH . '/includes/db.php';
 
 try {
     $sql = 'SELECT * FROM posts ORDER BY date DESC';
@@ -26,12 +26,11 @@ try {
         echo '<h2>' . htmlspecialchars($post ['title']) . '</h2>';
         echo '<p>' . htmlspecialchars($post['content']) . '</p>';
         echo '<p>Posted by ' . htmlspecialchars($post['author']) . '</p>';
-        echo '<a href="post.php?id=' . htmlspecialchars($post['id']) . '">Read more</a>';
+        echo '<a href="index.php?page=post&id=' . htmlspecialchars($post['id']) . '">Read more</a>';
     }
 } catch (PDOException $e) {
     echo 'Error:' . $e->getMessage();
 }
-
 
 
 

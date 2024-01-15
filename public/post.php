@@ -1,7 +1,7 @@
 <?php
-require_once '../includes/db.php';
+require_once ROOT_PATH . '/includes/db.php';
 
-include '../templates/header.php';
+include ROOT_PATH . '/templates/header.php';
 
 if (!isset($_GET['id'])) {
     die('Missing post id!');
