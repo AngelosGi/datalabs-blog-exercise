@@ -1,15 +1,14 @@
-<?php session_start(); ?>
 
 <nav>
-    <a href="../public/index.php">Home</a>
+    <a href="index.php?page=home">Home</a>
     |
     <?php if (!isset($_SESSION['admin_logged_in'])): ?>
-        <a href="../public/login.php">Admin Login</a>
+        <a href="index.php?page=login">Admin Login</a>
     <?php else: ?>
-        <?php if ($_SERVER['SCRIPT_NAME'] != '/datalabs-blog-exercise/admin/add_post.php'): ?>
-            <a href="../admin/add_post.php">Create Post</a>
+        <?php if ((isset($_GET['page']) ? $_GET['page'] : 'home') != 'add_post'): ?>
+            <a href="index.php?page=add_post">Create Post</a>
             |
         <?php endif; ?>
-        <a href="../admin/logout.php">Logout</a>
+        <a href="index.php?page=logout">Logout</a>
     <?php endif; ?>
 </nav>
