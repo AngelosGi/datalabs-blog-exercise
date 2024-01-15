@@ -23,6 +23,8 @@ switch ($page) {
         require ROOT_PATH . '/admin/logout.php';
     case 'delete':
         require ROOT_PATH . '/admin/delete_post.php';
+    case 'comment';
+        require ROOT_PATH . '/public/add_comment.php';
     break;
     // Add more cases as needed...
     default:
