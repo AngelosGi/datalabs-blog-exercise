@@ -1,5 +1,5 @@
 <?php 
-require_once '../includes/db.php';
+require_once ROOT_PATH . '/includes/db.php';
 session_start();
 
 if (!isset($_SESSION['admin_logged_in'])) {
@@ -8,7 +8,7 @@ if (!isset($_SESSION['admin_logged_in'])) {
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $id = $_POST['id'];
+    $id = $_POST['id']; 
 
     try {
         $sql = 'DELETE FROM posts WHERE id = ?';
@@ -19,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt = $pdo->prepare($sql);
         $stmt->execute([$id]);
 
-        header('Location: ../public/index.php');
+        header('Location: index.php');
         exit;
     } catch (PDOException $e) {
         echo 'Error: ' . $e->getMessage();
