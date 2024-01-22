@@ -1,4 +1,5 @@
 <?php
+require_once ROOT_PATH . '/includes/error_handler.php';
 
 $host = 'localhost';
 $db = 'datalabsblogdb';
@@ -16,6 +17,6 @@ $options = [
 try {
     $pdo = new PDO($dsn, $user, $password, $options);
 } catch (\PDOException $e) {
-    throw new \PDOException($e->getMessage(), (int)$e->getCode());
+    handleError($e); 
 }
 

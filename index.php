@@ -1,35 +1,47 @@
 <?php
-define('ROOT_PATH', __DIR__);
-session_start();
-require 'includes/db.php';?>
+if (!defined('ROOT_PATH')) {
+    define('ROOT_PATH', __DIR__);
+}
 
-<?php
+
+
+session_start();
+require_once 'includes/db.php';
+require 'templates/header.php';
+
+
 $page = $_GET['page'] ?? 'home'; // Default to 'home' if no page is specified
 
 switch ($page) {
     case 'home':
-        require 'public/index.php';
+        require ROOT_PATH . '/public/index.php';
+        break;
+    case 'post': 
+        require ROOT_PATH . '/templates/post.php';
+        break;
+    case 'comment';
+        require ROOT_PATH . '/public/add_comment.php';
+        require ROOT_PATH . '/includes/functions.php';
         break;
     case 'login':
-        require 'public/login.php';
+        require ROOT_PATH . '/public/login.php';
         break;
-    case 'add_post':
-        require 'admin/add_post.php';
-        break;
-    case 'post':
-        require ROOT_PATH . '/public/post.php';
+    case 'create_post':
+        require ROOT_PATH . '/admin/create_post.php';
         break;
     case 'logout':
         require ROOT_PATH . '/admin/logout.php';
-    case 'delete':
-        require ROOT_PATH . '/admin/delete_post.php';
-    case 'comment';
-        require ROOT_PATH . '/public/add_comment.php';
-    break;
+        break;
+    case 'edit_post':
+        require ROOT_PATH . '/admin/edit_post.php';
+        break;
+    // case 'delete_comment':
+    //     require ROOT_PATH . '/admin/delete_comment.php';
+    //     break;
     // Add more cases as needed...
     default:
-        // You could show a 404 page here...
-        echo "Page not found";
+        // I could show a 404 page here...
+        echo "404 Page not found";
         break;
 }
 ?>

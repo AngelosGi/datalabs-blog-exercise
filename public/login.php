@@ -1,6 +1,9 @@
 <?php 
-require_once ROOT_PATH . '/includes/db.php';
 
+require_once './includes/db.php';
+require_once './includes/functions.php';
+
+//NEXT STEP
 $error = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -8,7 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $password = $_POST['password'];
 
     if (empty($username) || empty($password)) {
-        $error = 'Username and password are required';
+        handleError(new Exception('Username and password are required'));
     } else {
         try {
             $sql = 'SELECT * FROM admin WHERE username = ?';
@@ -23,20 +26,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 header('Location: index.php');
                 exit;
             } else {
-                echo 'Invalid Username or Password';
+                handleError(new Exception('Invalid Username or Password'));
             }
         } catch (PDOException $e) {
-            echo 'Error: ' . $e->getMessage();
+            handleError($e);
         }
     }
     
 }
 ?>
-
-<!-- Display error message -->
-<?php if (!empty($error)): ?>
-    <p><?php echo $error; ?></p>
-<?php endif; ?>
 
 
 <form method="post">

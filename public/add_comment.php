@@ -1,9 +1,12 @@
 <?php 
 if (!defined('ROOT_PATH')) {
-    define('ROOT_PATH', __DIR__ . '/..');
+    define('ROOT_PATH', realpath(__DIR__ . '/..'));
 }
 
+
+require_once ROOT_PATH . '/includes/config.php';
 require_once ROOT_PATH . '/includes/db.php';
+require_once ROOT_PATH . '/includes/error_handler.php';
 
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -13,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Input validation
     if (empty($id) || empty($author) || empty($content)) {
-        die('Please fill all required fields!');
+        handleError(new Exception('Please fill all required fields!'));
     }
 
     try {
@@ -21,10 +24,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt = $pdo->prepare($sql);
         $stmt->execute([$id, $author, $content]);
 
-        header('Location: post.php?id=' . $id);
+        header('Location: ' . BASE_URL . '/index.php?page=post&id=' . $id);
         exit;
     } catch (PDOException $e) {
-        echo 'Error: ' . $e->getMessage();
+        handleError($e);
     }
 }
 ?>
