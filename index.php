@@ -35,6 +35,9 @@ switch ($page) {
     case 'edit_post':
         require ROOT_PATH . '/admin/edit_post.php';
         break;
+    case 'delete_post':
+        require ROOT_PATH . '/admin/delete_post.php';
+        break;
     // case 'delete_comment':
     //     require ROOT_PATH . '/admin/delete_comment.php';
     //     break;
