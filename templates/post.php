@@ -21,6 +21,11 @@ try {
     echo '<p>Posted by ' . htmlspecialchars($post['author']) . ' on ' . htmlspecialchars($post['date']) . '</p>';
     echo '<a href="index.php?page=edit_post&id=' . htmlspecialchars($post['id']) . '">Edit Post</a>';
 
+    echo '<form method="POST" action="admin/delete_post.php" onsubmit="return confirm(\'Are you sure you want to delete this post?\');">';
+    echo '<input type="hidden" name="id" value="' . htmlspecialchars($post['id']) . '">';
+    echo '<input type="submit" value="Delete Post">';
+    echo '</form>';
+
     $sql = 'SELECT * FROM comments WHERE post_id = ? ORDER BY date DESC';
     $stmt = $pdo->prepare($sql);
     $stmt->execute([$id]);
@@ -51,13 +56,6 @@ try {
     <input type="submit" value="Submit">
 </form>
 
-
-
-
-<form method="post" action="/admin/delete_post.php">
-    <input type="hidden" name="id" value="<?php echo htmlspecialchars($id); ?>">
-    <input type="submit" value="Delete Post">
-</form>
 
 
 <script>
