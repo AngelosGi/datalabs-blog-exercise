@@ -36,7 +36,12 @@ try {
         echo '<h3>' . htmlspecialchars($comment['author']) . ' said:</h3>';
         echo '<p>' . htmlspecialchars($comment['content']) . '</p>';
         echo '<p>Posted on ' . htmlspecialchars($comment['date']) . '</p>';
-        // echo '<a href="admin/delete_comment.php?id=' . htmlspecialchars($comment['id']) . '">Delete Comment</a>';
+        
+        echo '<form method="POST" action="admin/delete_comment.php" onsubmit="return confirm(\'Are you sure you want to delete this comment?\');">';
+        echo '<input type="hidden" name="id" value="' . htmlspecialchars($comment['id']) . '">';
+        echo '<input type="hidden" name="post_id" value="' . htmlspecialchars($post['id']) . '">';
+        echo '<input type="submit" value="Delete Comment">';
+        echo '</form>';
     }
 } catch (PDOException $e) {
     handleError($e);
