@@ -6,11 +6,11 @@
 </head>
 <body>
 
-<?php 
+<!-- <?php 
 
     require_once ROOT_PATH . '/includes/functions.php';
     require_once ROOT_PATH . '/includes/error_handler.php';
-    ?>
+    ?> -->
 
     <h1>Welcome to My Blog</h1>
 

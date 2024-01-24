@@ -1,3 +1,4 @@
 <?php 
 
-define('BASE_URL', 'http://localhost/datalabs-try-2');
+define('BASE_URL', '/datalabs-blog-exercise');
+define('ROOT_DIR', '/datalabs-blog-exercise');
