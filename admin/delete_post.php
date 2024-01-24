@@ -42,7 +42,7 @@ try {
     $stmt->execute([$postId]);
 
     // Redirect to the main page
-    header('Location: ' . BASE_URL . '/index.php');
+    header('Location: index.php');
     exit;
 } catch (PDOException $e) {
     handleError($e);
