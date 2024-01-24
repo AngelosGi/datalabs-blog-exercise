@@ -54,7 +54,7 @@ try {
 
 
 
-<form method="post" action="/admin/delete_post.php">
+<form method="post" action="../admin/delete_post.php">
     <input type="hidden" name="id" value="<?php echo htmlspecialchars($id); ?>">
     <input type="submit" value="Delete Post">
 </form>
