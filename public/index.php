@@ -26,7 +26,11 @@ try {
         echo '<p>' . htmlspecialchars($post['content']) . '</p>';
         echo '<p>Posted by ' . htmlspecialchars($post['author']) . '</p>';
         echo '<a href="index.php?page=post&id=' . htmlspecialchars($post['id']) . '">Read more </a>';
-        echo '<a href="index.php?page=edit_post&id=' . htmlspecialchars($post['id']) . '">Edit Post</a>';
+        
+        if (isset($_SESSION['admin_logged_in']) && $_SESSION['admin_logged_in']) {
+            
+            echo '<a href="index.php?page=edit_post&id=' . htmlspecialchars($post['id']) . '">Edit Post</a>';
+        }
     }
 } catch (PDOException $e) {
     handleError($e);
