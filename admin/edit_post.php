@@ -7,7 +7,7 @@ require_once ROOT_PATH . '/includes/config.php';
 require_once ROOT_PATH . '/includes/db.php';
 require_once ROOT_PATH . '/includes/functions.php';
 require_once ROOT_PATH . '/includes/error_handler.php';
-include_once ROOT_PATH . '../templates/header.php';
+include_once ROOT_PATH . '/templates/header.php';
 
 // Check if the user is logged in as an admin
 if (!isset($_SESSION['admin_logged_in'])) {
@@ -55,15 +55,19 @@ try {
 }
 ?>
 
+<body class="bg-gray-900">
+
 <!-- Edit Post Form -->
 <div class="mx-auto max-w-xl px-4 py-8"> <!-- Start of Tailwind CSS container for the form -->
-<form method="post" class="space-y-4">
-    <label for="title" class="block text-sm font-medium text-gray-700">Title:</label>
-    <input type="text" id="title" name="title" value="<?php echo htmlspecialchars($post['title']); ?>" required class="block w-full px-4 py-2 border border-gray-300 rounded">
-    <label for="content" class="block text-sm font-medium text-gray-700">Content:</label>
-    <textarea id="content" name="content" required class="block w-full px-4 py-2 border border-gray-300 rounded"><?php echo htmlspecialchars($post['content']); ?></textarea>
-    <label for="author" class="block text-sm font-medium text-gray-700">Author:</label>
-    <input type="text" id="author" name="author" value="<?php echo htmlspecialchars($post['author']); ?>" required class="block w-full px-4 py-2 border border-gray-300 rounded">
-    <input type="submit" value="Update Post" class="px-4 py-2 bg-blue-500 text-white rounded">
-</form>
-</div>
+    <form method="post" class="space-y-4">
+        <label for="title" class="block text-sm font-medium text-gray-200">Title:</label>
+        <input type="text" id="title" name="title" value="<?php echo htmlspecialchars($post['title']); ?>" required class="block w-full px-4 py-2 border border-gray-300 rounded bg-white text-gray-900">
+        <label for="content" class="block text-sm font-medium text-gray-200">Content:</label>
+        <textarea id="content" name="content" required class="block w-full px-4 py-2 border border-gray-300 rounded bg-white text-gray-900"><?php echo htmlspecialchars($post['content']); ?></textarea>
+        <label for="author" class="block text-sm font-medium text-gray-200">Author:</label>
+        <input type="text" id="author" name="author" value="<?php echo htmlspecialchars($post['author']); ?>" required class="block w-full px-4 py-2 border border-gray-300 rounded bg-white text-gray-900">
+        <input type="submit" value="Update Post" class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">
+    </form>
+</div> <!-- End of Tailwind CSS container for the form -->
+
+</body>
