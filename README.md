@@ -1,8 +1,4 @@
-Certainly! Here's a README template that you can use for your GitHub repository:
-
----
-
-# My Blog Project
+# Blog Exercise
 
 ## Overview
 
